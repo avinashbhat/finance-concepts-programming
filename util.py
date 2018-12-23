@@ -1,6 +1,7 @@
 import random
 import numpy
 
+
 # Util function to generate random number between two indices
 def generate_random_number(startingIndex, endingIndex):
 	return random.randint(startingIndex, endingIndex)
