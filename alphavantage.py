@@ -1,5 +1,4 @@
 import requests
-from util import convert_dictionary_to_numpy
 
 def get_time_series_daily(symbol, apikey, function="TIME_SERIES_DAILY", outputsize="compact"):
 	payload = {'function': function, 'symbol': symbol, 'outputsize': outputsize, 'apikey': apikey}
