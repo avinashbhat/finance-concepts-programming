@@ -16,3 +16,10 @@ def generate_random_matrix(startingIndex, endingIndex, xrows, yrows):
 # Returns a pandas DataFrame
 def convert_dictionary_to_numpy(dictionary):
 	return pandas.DataFrame.from_dict(dictionary, orient='index')
+
+# Util function to normalize a series
+# Returns a pandas dataframe
+def normalize_series_to_hundered(series):
+	firstElement = float(series[0])
+	series = [(float(element)/firstElement)*100 for element in series]
+	return series
