@@ -35,3 +35,20 @@ def getPortfolioRateofReturn(tickers, weights):
 	annual_returns = simpleReturnsData.mean() * 250
 	rateOfReturn = numpy.dot(annual_returns, weights)
 	return round(rateOfReturn * 100, 2)
+
+def displayRateOfReturn(tickers):
+	data = dict()
+	for symbol in tickers:
+		try:
+			data[symbol] = convert_dictionary_to_numpy(get_time_series_daily_adjusted(symbol=symbol, apikey=apikey))['5. adjusted close']
+		except:
+			print("Error fetchig data for symbol ", symbol)
+	
+	# Normalize the values
+	normalizedDict = dict()
+	for symbol in data:
+		normalizedDict[symbol] = normalize_series_to_hundered(data[symbol])
+
+	normalizedData = pandas.DataFrame.from_dict(normalizedDict)
+	normalizedData.plot(figsize=(15, 6))
+	plt.show()
