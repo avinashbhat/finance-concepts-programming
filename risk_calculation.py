@@ -22,4 +22,12 @@ def calculate_risk(tickers):
 	meanValues = [values*250 for values in meanValues]
 	variance = [(values*250)**0.5 for values in stdValues]
 
-	return (meanValues, variance)
+	# Calculate covariance and correlation
+	# Multiply by 250 to accomodate trading days
+	covar = [data[ticker].var() * 250 for ticker in data]
+	corel = data.corr()
+
+	return (meanValues, variance, covar, corel)
+
+
+print(calculate_risk(['PG', 'BEI.DE']))
