@@ -5,7 +5,6 @@ from constants import apikey
 import pandas
 import numpy
 import matplotlib.pyplot as plt 
-from risk_calculation import calculate_portfolio_variance_volatility
 import random
 
 def getEfficientFrontier(tickers):
@@ -42,7 +41,7 @@ def getEfficientFrontier(tickers):
 		weights /= numpy.sum(weights)
 		# Expected portfolio return
 		pf_returns.append(numpy.sum(weights * dataMean) * 250)
-		pf_vols.append(calculate_portfolio_variance_volatility(tickers, [weight for weight in weights])[1])
+		pf_vols.append((numpy.dot(weights.T, numpy.dot(dataCov, weights))) ** 0.5)
 
 	pf_returns = numpy.array(pf_returns)
 	pf_vols = numpy.array(pf_vols)
@@ -51,6 +50,7 @@ def getEfficientFrontier(tickers):
 	portfolios.plot(x='Volatility', y='Returns', kind='scatter', figsize=(10,6))
 	plt.xlabel('Expected Volatility')
 	plt.ylabel('Expected Return')
+	plt.show()
 
 
 getEfficientFrontier(['PG', '^GSPC'])
