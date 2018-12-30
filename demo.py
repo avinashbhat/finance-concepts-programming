@@ -1,4 +1,4 @@
-from portfolio_rate_of_return import getPortfolioRateofReturn
+from portfolio_rate_of_return import getPortfolioRateofReturn, displayRateOfReturn
 from util import convert_dictionary_to_numpy
 from alphavantage import get_time_series_daily_adjusted
 from constants import apikey
@@ -13,4 +13,5 @@ from constants import apikey
 # print(mean)
 # print(percentage)
 
-print(getPortfolioRateofReturn(['PG', 'F'], [0.5, 0.5]))
+# print(getPortfolioRateofReturn(['PG', 'F'], [0.5, 0.5]))
+displayRateOfReturn(['^GSPC', 'IXIC', '^GDAXI', '^FTSE'])
