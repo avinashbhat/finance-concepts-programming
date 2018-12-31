@@ -51,6 +51,3 @@ def getEfficientFrontier(tickers):
 	plt.xlabel('Expected Volatility')
 	plt.ylabel('Expected Return')
 	plt.show()
-
-
-getEfficientFrontier(['PG', '^GSPC'])
