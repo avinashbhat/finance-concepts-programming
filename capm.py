@@ -27,8 +27,3 @@ def calculate_beta(tickers):
 	variance = [logReturnsData[ticker].var() * 250 for ticker in tickers]
 	beta = cov_with_market/variance[1]
 	return beta
-
-
-
-
-print(calculate_beta(['PG', '^GSPC']))
